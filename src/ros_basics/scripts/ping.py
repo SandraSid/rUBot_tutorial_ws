@@ -5,7 +5,7 @@ from std_msgs.msg import String
 ## ping_pong -> PING
 
 rospy.init_node("ping_node", anonymous=True)  		#Create a ping node
-pub = rospy.Publisher("ping_topic", String, queue_size=10) #Publish a String type message
+pub = rospy.Publisher("/ping_topic", String, queue_size=10) 	#Publish a String type message
 								#in /ping topic
 rate = rospy.Rate(1)						#Each second
 
@@ -13,6 +13,6 @@ rate = rospy.Rate(1)						#Each second
 
 while not rospy.is_shutdown():
 	msg = String			#Definetype of message
-	msg.data = "ping"		#Set message
+	msg.data = ping		#Set message
 	pub.publish(msg)		#Publish message
 	rate.sleep()			##Wait untill new
