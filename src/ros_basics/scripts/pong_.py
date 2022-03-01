@@ -2,16 +2,17 @@
 import rospy
 from std_msgs.msg import String
 
-##Script for the phyton publisher
+## ping_pong -> PONG
 
-rospy.init_node("ping_node", anonymous=True)  	#Create a ping node
-pub = rospy.Publisher("/ping", String, queue_size=10) #Publish a String type message
-							#in /ping topic
-rate = rospy.Rate(1)					#Each second
+def pong(msg):
+	global a
+	counter += msg.data
+	new_msg = String		#Define type of message
+	new_msg.data = "pong"		#Set message
+	pub.publish(new_msg)		#Publish new message
+	rospy.loginfo("System answer: : %s", new_message)
 
-##Message to send
-while not rospy.is_shutdown():
-	msg = String
-	msg.data = ping
-	pub.publish(msg)
-	rate.sleep()
+rospy.init_node('pong_node')						#Creating a pong node
+pub = rospy.Publisher("/pong (topic)", String, queue_size=10)	
+sub = rospy.Subscriber("/ping (?)", String, pong)
+rospy.spin()
