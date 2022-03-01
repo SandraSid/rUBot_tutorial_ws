@@ -12,7 +12,7 @@ def pong(msg):
 	pub.publish(new_msg)		#Publish new message
 	rospy.loginfo("System answer: : %s", new_message)
 
-rospy.init_node('pong_node')						#Creating a pong node
-pub = rospy.Publisher("/pong (topic)", String, queue_size=10)	
-sub = rospy.Subscriber("/ping (?)", String, pong)
+rospy.init_node('pong_node')		#Creating a pong node
+pub = rospy.Publisher("pong_topic", String, queue_size=10)	
+sub = rospy.Subscriber("ping_topic", String, pong)
 rospy.spin()
