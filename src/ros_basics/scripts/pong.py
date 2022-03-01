@@ -8,6 +8,8 @@ def pong_exercice(msg):
 	global a
 	counter += msg.data
 	new_msg = String		#Define type of message
+	str_pong = "pong"		#Create message
+	rospy.loginfo(str_pong)	
 	new_msg.data = pong		#Set message
 	pub.publish(new_msg)		#Publish new message
 	rospy.loginfo("System answer: %s", new_message)

@@ -13,6 +13,8 @@ rate = rospy.Rate(1)						#Each second
 
 while not rospy.is_shutdown():
 	msg = String			#Definetype of message
-	msg.data = ping		#Set message
+	str_ping = "ping"		#Create message
+	rospy.loginfo(str_ping)
+	msg.data = str_ping		#Set message
 	pub.publish(msg)		#Publish message
 	rate.sleep()			##Wait untill new
